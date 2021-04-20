@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% block title %}Book list{% endblock %}
+{% load static %}
+{% block content %}
+<h1 class="page-header">Books</h1>
+<button class="btn btn-primary show-form" data-url="{% url 'create' %}">
+<span class="fa fa-plus"></span> New book</button>
+<br>
+<br>
+<table class="table" id="book-table">
+  <thead>
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">Title</th>
+      <th class="text-center">Author</th>
+      <th class="text-center">Pages</th>
+      <th class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for book in books %}
+    {% include "app/book_list_2.html" %}
+  {% empty %}
+    <tr>
+      <td colspan="7" class="text-center bg-info">No book</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<div class="modal fade" id="modal-book">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
+{% endblock %}

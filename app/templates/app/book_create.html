@@ -1,0 +1,58 @@
+{% load static %}
+<form method="post" data-url="{% url 'create' %}" class="create-form">
+  {% csrf_token %}
+  <div class="modal-header">
+    <h5 class="modal-title" >Create book</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="wrap">
+          <div class="">
+            <label for="{{ form.title.label }}" class="mat-label">{{ form.title.label }}</label>
+            {{ form.title }}
+          </div>
+          {% if form.title.errors %}
+            <br />
+            <b class="text-red">Alert: {{ form.title.errors}}</b>
+          {% endif %}
+          <br />
+          <div class="">
+            <label for="author" class="mat-label">{{ form.author.label }}</label>
+            {{ form.author }}
+          </div>
+          {% if form.author.errors %}
+            <br />
+            <b class="text-red">Alert: {{ form.author.errors}}</b>
+          {% endif %}
+          <br />
+          <div class="">
+            <label for="pages" class="mat-label">{{ form.pages.label }}</label>
+            {{ form.pages }}
+          </div>
+          {% if form.pages.errors %}
+            <br />
+            <b class="text-red">Alert: {{ form.pages.errors}}</b>
+          {% endif %}
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Add book</button>
+  </div>
+</form>
+<script type="text/javascript">
+  $(".mat-input").focus(function(){
+    $(this).parent().addClass("is-active is-completed");
+  });
+  $(".mat-input").focusout(function(){
+    if($(this).val() === "")
+      $(this).parent().removeClass("is-completed");
+    $(this).parent().removeClass("is-active");
+  })
+</script>

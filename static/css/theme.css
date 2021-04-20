@@ -1,0 +1,16 @@
+.text-green{
+    color: green !important;
+}
+.text-red{
+    color: red !important;
+}
+.btn-default{
+    border-color: lightgray;
+}
+.btn-default:hover{
+    background: lightgray;
+}
+.wrap {
+  width: 450px;
+  margin: 0 auto;
+}
